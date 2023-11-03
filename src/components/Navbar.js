@@ -1,18 +1,18 @@
 import { useNavigate, Link } from "react-router-dom";
 
-const Navbar = ({ searchText, setSearchText }) => {
 
+const Navbar = ({ searchText, setSearchText, onSearchClick }) => {
   const navigate = useNavigate();
 
-  const updateSearchText = (e) => {
+  const handleSearch = () => {
+    onSearchClick(); 
     navigate("/search");
-    setSearchText(e.target.value);
   };
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/moviesite">
           Movie Browser
         </Link>
         <button
@@ -29,7 +29,7 @@ const Navbar = ({ searchText, setSearchText }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link active" aria-current="page" to="/moviesite">
                 Home
               </Link>
             </li>
@@ -52,11 +52,15 @@ const Navbar = ({ searchText, setSearchText }) => {
               placeholder="Search"
               aria-label="Search"
               value={searchText}
-              onChange={updateSearchText}
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
+              onChange={(e) => setSearchText(e.target.value)}
+              
+          />
+          <button
+            className="btn btn-outline-success"
+            type="button"
+            onClick={handleSearch}>
+            Search
+          </button>
           </form>
         </div>
       </div>

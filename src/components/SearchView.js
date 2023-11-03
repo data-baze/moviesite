@@ -10,6 +10,14 @@ import MovieCard from './MovieCard';
 
 const SearchView = ({keyword, searchResults}) => {
     const title = `You are searching for ${keyword}`
+    const notFound = `No Movies found for ${keyword}`
+  
+
+
+    if (!searchResults || Object.keys(searchResults).length === 0) {
+        return <Hero text={notFound} />
+        } 
+        else {
 
     const resultsHtml = searchResults.map((obj, i) => {
         return <MovieCard movie={obj} key={i} />
@@ -31,5 +39,5 @@ const SearchView = ({keyword, searchResults}) => {
       </div>
     )
   }
-
+}
   export default SearchView;

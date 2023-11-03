@@ -1,23 +1,38 @@
-
-import Hero from './Hero';
-
+import Hero from "./Hero";
+import MovieList from "./MovieList";
+import { useState, useEffect } from "react";
 
 const Home = () => {
-    return (
-      <div>
-            <Hero text=" Welcome to the Movie browser" />
-          <div className="container">
-              <div className="row">
-                <div className="col-lg-8 offset-lg-2 my-5">
-                  <p className="lead">
-                  The research project titled “Effects of ICT Utilization on Stress Management among Undergraduate Students of the University of Abuja” presents insightful findings on the intricate relationship between Information and Communication Technology (ICT) utilization and stress levels among students. The study establishes a compelling correlation, revealing a significant negative link between the incorporation of ICT tools in teaching methods and the academic stress experienced by University of Abuja students.
+  const [homeMovies, setHomeMovies] = useState({});
 
-                  </p>
-                </div>
-              </div>
-          </div>
-      </div>
+  useEffect(() => {
+    fetch(
+      "https://api.themoviedb.org/3/discover/movie?api_key=921ffd8a4b3025daed7f3998c1c654bf&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
     )
-  }
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setHomeMovies(data.results);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-  export default Home;
+  const randomIndex = Math.floor(Math.random() * homeMovies.length);
+  const backdropPath = homeMovies[randomIndex]?.backdrop_path || "";
+  const homeBackdropUrl = `https://image.tmdb.org/t/p/original${backdropPath}`;
+
+  return (
+    <div>
+      <Hero
+        text=" Welcome."
+        text1="Millions of movies, TV shows and people to discover. Explore now."
+        homeBackdropUrl={homeBackdropUrl}
+      />
+      <MovieList />
+    </div>
+  );
+};
+
+export default Home;
