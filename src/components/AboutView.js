@@ -13,7 +13,7 @@ const AboutView = () => {
             <h2 className="mb-4">About Us</h2>
             <p>
               Welcome to my little corner of the internet! 🚀 I'm on a mission
-              to bring some creativity, hone my skills while building amazing
+              to bring some creativity and hone my skills while building amazing
               and fun web apps.
             </p>
             <p>

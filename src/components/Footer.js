@@ -7,7 +7,7 @@ const Footer = () => {
         <p className="text-center mb-0">
           &copy; 2023 Movie Browser. All rights reserved.
           <br />
-          Made with Love from Earth!!
+          Made with <span class="love-icon">&#10084;</span> from Earth!!
           <br /> Reach out to me on
           <a
             href="https://www.linkedin.com/in/data-bassey"
