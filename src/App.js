@@ -37,7 +37,7 @@ function App() {
         setSearchText={setSearchText}
       />
       <Routes>
-        <Route path="/moviesite" exact element={<Home />} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/about" element={<AboutView />} />
         <Route
           path="/search"
