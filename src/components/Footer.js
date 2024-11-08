@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer mt-auto py-3 bg-dark text-white">
       <div className="container h-100 w-100">
         <p className="text-center mb-0">
-          &copy; 2023 Movie Browser. All rights reserved.
+          &copy; 2021 Movie Browser. All rights reserved.
           <br />
           Made with <span class="love-icon">&#10084;</span> from Earth!!
           <br /> Reach out to me on
